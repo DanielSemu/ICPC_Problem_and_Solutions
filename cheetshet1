@@ -1,0 +1,114 @@
+		Basic Number Theory-1
+	1. Modular arithmetic
+1 (a+b)%c=(a%c +b%c)%c
+2 (a-c)%c=((a%c)-(b%c))%c
+3 (a*c)%c=((a%c)*(b%c))%c
+4 (a/b)%c=((a%c)*((1/b)%c))%c
+	2. Modular exponentiation
+//iterative method
+#define ll long long int
+void Binary(double a, ll b){
+    double res=1.0;
+    if(b<0)b=-1*b;
+    while(b>0){
+        if(b%2==1){
+            res*=a;
+            b--;
+        }
+        else{
+            a*=a;
+            b=b/2;
+        }
+    }
+    if(b<0) res=(double)(1.0)/(double)(res);
+    cout<<res<<endl;
+}
+//recursion method
+int binaryExponentiation(int x,int n)
+{
+    if(n==0)
+        return 1;
+    else if(n%2 == 0)        //n is even
+        return binaryExponentiation(x*x,n/2);
+    else                             //n is odd
+        return x*binaryExponentiation(x*x,(n-1)/2);
+}
+However, storing answers that are too large for their respective datatypes is an issue with this method
+int modularExponentiation(int x,int n,int M)
+{
+    int result=1;
+    while(n>0)
+    {
+        if(power % 2 ==1)
+            result=(result * x)%M;
+        x=(x*x)%M;
+        n=n/2;
+    }
+    return result;
+}
+	3. Greatest Common Divisor (GCD)
+Euclid's algorithm
+int GCD(int A, int B) {
+    if(B==0)
+        return A;
+    else
+        return GCD(B, A % B);
+}
+
+#include < iostream >
+int d, x, y;
+void extendedEuclid(int A, int B) {
+    if(B == 0) {
+        d = A;
+        x = 1;
+        y = 0;
+    }
+    else {
+        extendedEuclid(B, A%B);
+        int temp = x;
+        x = y;
+        y = temp - (A/B)*y;
+    }
+}
+	4.Sieve of Eratosthenes
+The sieve of Eratosthenes is one of the most efficient ways to find all primes smaller than n when n is smaller than 10 million or so
+void SieveOfEratosthenes(int n)
+{
+    bool prime[n + 1];
+    memset(prime, true, sizeof(prime));
+    for (int p = 2; p * p <= n; p++) {
+        if (prime[p] == true) {
+            for (int i = p * p; i <= n; i += p)
+                prime[i] = false;
+        }
+    }
+    for (int p = 2; p <= n; p++)
+        if (prime[p])
+            cout << p << " ";
+}
+	4.1 Prime factorzation
+Naive solution: O(sqrt(n)) efficient for large and one test case
+void primeFactors(int n) 
+{ 
+    while (n%2 == 0) 
+    { 
+        printf("%d ", 2); 
+        n = n/2; 
+    } 
+    for (int i = 3; i <= sqrt(n); i = i+2) 
+    { 
+        while (n%i == 0) 
+        { 
+            printf("%d ", i); 
+            n = n/i; 
+        } 
+    } 
+    if (n > 2) 
+        printf ("%d ", n); 
+}  
+Sieve of Eratosthenes:
+Prime Factorization using Sieve O(log n) for multiple queries
+
+
+
+

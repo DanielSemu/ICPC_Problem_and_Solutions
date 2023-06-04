@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1662293728 source:/home/daniel/ICPC-collection/ICPC-C++/lkl.cpp
+	<iostream>
+
+1662293747 source:/home/daniel/ICPC-collection/ICPC-C++/main.cpp
+	<iostream>
+

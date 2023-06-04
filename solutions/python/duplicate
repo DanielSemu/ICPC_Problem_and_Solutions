@@ -1,0 +1,19 @@
+
+from posixpath import split
+
+
+def R(dup):
+    l2 = []
+    for num in dup:
+        if num in l2:
+            pass
+        else:
+            l2.append(num)
+    return l2
+
+x = input()
+li= [x.split(' ')]
+
+
+
+print(R(li))

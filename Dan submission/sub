@@ -1,0 +1,375 @@
+DancingtheCheeky-Cheeky
+
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    int x;
+   string s;
+   cin>>x;
+   for(int i=0;i<x;i++){
+       cin>>s;
+       int n=s.size();
+      
+while (s.substr(0,n/2)!=s.substr(n/2,n/2)){
+    n--;
+}
+      string y=s.substr(0,n/2);
+      string ss=y; 
+      while(y.size()<s.size()){
+        y.append(y);
+      }
+      y.erase((y.find(ss)),ss.size());
+y.erase(0,s.size());
+        while(y.size()<8){
+        y.append(ss);
+     }
+     y.erase(8,y.size()-1);
+     cout<<y<<"..."<<endl;
+     
+   }
+    return 0;
+}
+code creator
+from dataclasses import replace
+
+
+n=int(input())
+list1=[]
+list2=[]
+t=1
+while(n!=0):
+    for i in range(0,n):
+        k=input()
+        if '\\' in k:
+            k=k.replace('\\','\\\\')
+        if '\"' in k:
+            k=k.replace('\"','\\"')
+        list2.append(k)
+    print("Case {}:".format(t))
+    print("#include<string.h>")
+    print("#include<stdio.h>")
+    print("int main(){")
+    for i in range(0,n):
+        print("printf(""\"{}\\n\");".format(list2[i]))
+    print("printf(\"\\n\");")
+    print("return 0;")
+    print("}")
+    t=t+1
+    n=int(input())
+    list2=[]
+    Coffee
+for _ in range(int(input())):
+    c,p=map(int,input().split())
+    coffe=[]
+    size=[]
+    for i in range(c):
+     n,s,m,l=map(str,input().split())
+     coffe.append(n)
+     size.append([int(s),int(m),int(l)])
+    df=100//p
+
+    for i in range(p):
+        ans=0
+        x,y,z=map(str,input().split())
+        if y=="small":
+         ans=size[coffe.index(z)][0]
+        if y=="medium":
+         ans=size[coffe.index(z)][1]
+        if y=="large":
+         ans=size[coffe.index(z)][2]
+        ans+=df
+        if ans%10==1 or ans%10==6:
+            ans-=1
+        elif ans%10==4 or ans%10==9:
+            ans+=1
+        print(x,ans)
+ Grachten
+from fractions import Fraction
+import math
+try:
+    while 1:
+        AB,AC,BD=map(int,input().split())
+        dif1=BD-AC
+        tet=math.atan(AB/dif1)
+        TB=math.tan(tet)*BD
+        ou=Fraction(TB-AB).limit_denominator()
+        out=str(ou)
+        if "/" in out:
+            print(out)
+        else:
+            print(ou,end="")
+            print("/1")
+
+except:
+    pass
+from math import gcd
+
+def reduceFraction(x, y):
+    d = gcd(x, y);
+
+    x = x // d;
+    y = y // d;
+
+    print(f'{x}/{y}');
+
+
+
+
+try:
+     while 1:
+            x, y, z = map(int, input().split(' '))
+            n1=x*y
+            n2=z-y
+
+            reduceFraction(n1, n2);
+
+except :
+    pass
+
+gold bach
+#include <bits/stdc++.h>
+using namespace std;
+bool prime(int n)
+{
+    if((n==2)||n==3)
+    return true;
+    else{
+    for (int i =2; i*i <= n; i++){
+                if (n % i == 0) {
+               return false;
+    }}
+    return true;
+    }
+}
+int main(){
+   
+  while(1){
+  int num,a,b;
+     cin>>num;
+     if(num==-1)
+     break;
+     else{
+       a=num/2;
+       b=num-a;
+       while(a>=2){
+       if (prime(a)){
+            if(prime(b)){
+             cout<<a<<" "<<b<<endl;   
+             break;
+       }else{
+        a-=1;
+        b+=1;
+       }
+                                                           
+       }else{
+         a-=1;
+        b+=1;
+       }
+       }
+     }
+  }
+}
+forbidden zero
+from math import gcd
+try:
+    while True:
+        
+        a,b,c=map(int,input().split())
+        d=(a*b)
+        e=abs(b-c)
+        f=gcd(d,e)
+        d=d//f
+        e=e//f
+        print(f"{d}/{e}")
+except:
+    pass  
+x=int(input())
+while 1:
+    x+=1
+    t=str(x)
+    if "0" not in t:
+        print(t)
+        break
+greetings
+x=input()
+len=len(x)-2
+print(x[0],end="")
+for i in range(len*2):
+    print("e",end="")
+print("y")
+difference & gcd
+while 1:
+    a= [int(i) for i in input().split()]
+    if a[0]==-1:
+        break
+    x= a[0]
+    y = sum(a)
+    print('IMPOSSIBLE') if y%x!=0 else print(x,y)
+DateBugs
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    int n, cases = 0;
+    while(scanf("%d", &n) == 1 && n) {
+        int diff[20], y[20], a[20], b[20];
+        int i, yflag = 0;
+        for(i = 0; i < n; i++) {
+            scanf("%d %d %d", &y[i], &a[i], &b[i]);
+            diff[i] = b[i]-a[i];
+            if(y[i] > yflag)
+                yflag = y[i];
+        }
+        for(; yflag < 10000; yflag++) {
+            for(i = 0; i < n; i++) {
+                if((yflag-y[i])%diff[i] != 0)
+                    break;
+            }
+            if(i == n)
+                break;
+        }
+        printf("Case #%d:\n", ++cases);
+        if(yflag == 10000)
+            puts("Unknown bugs detected.\n");
+        else
+            printf("The actual year is %d.\n\n", yflag);
+    }
+    return 0;
+}
+Elections
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+int i,j,t;
+long long a,b,c,max;
+cin>>t;
+while(t--){
+cin>>a;
+max=a;
+cin>>b;
+if(b>max)
+max=b;
+cin>>c;
+if(c>max)
+max=c;
+if(a==b && b==c)
+cout<<1<<" "<<1<<" "<<1<<endl;
+else {
+
+a=max-a;
+if(a!=0)
+a++;
+b=max-b;
+if(b!=0)
+b++;
+c=max-c;
+if(c!=0)
+c++;
+cout<<a<<" "<<b<<" "<<c<<endl;
+}
+}
+}
+Elections
+for i in range(int(input())):
+    a,b,c=map(int,input().split())
+    if a==b and b==c:
+        print("1",end=' ')
+        print("1",end=' ')
+        print("1")
+        
+    else:
+        m=max(a,b)
+        m1=max(m,c)
+        if a==m1:
+            a=0
+            b=m1-b+1
+            c=m1-c+1
+        elif b==m1:
+            a=m1-a+1
+            b=0
+            c=m1-c+1
+        else:
+            a=m1-a+1
+            b=m1-b+1
+            c=0
+        print(a,end=' ')
+        print(b,end=' ')
+        print(c)
+ EvenDivisor
+x=int(input())
+for i in range(x):
+    num=1
+    y=int(input())
+    tot=1
+    toto=1
+    for j in range(y):
+        n,m=map(int, input().split())
+        toto*=(m+1)
+        if n%2!=0:
+            tot*=(m+1)
+    print(toto-tot)
+ExactSum
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{  
+    size_t N;
+    while (cin >> N)
+    {
+        vector<int> books(N);
+        for (size_t b = 0; b < N; ++b)
+            cin >> books[b];
+
+        int M;
+        cin >> M;
+
+        sort(books.begin(), books.end());
+        int i = books.front();
+        int j = books.back();
+        for (size_t b = 0; b < N; ++b)
+        {
+            int b1 = books[b];
+            int b2 = M - b1;
+            if (b1 > b2)
+                break;
+            if (binary_search(books.begin() + b + 1, books.end(), b2))
+            {
+                if (b2 - b1 < j - i)
+                {
+                    i = b1;
+                    j = b2;
+                }
+            }
+        }
+        cout << "Peter should buy books whose prices are "<< i<< " and "<< j<< "."<< endl << endl;
+    }
+    return 0;
+}
+email
+for i in range(int(input())):
+    l=list(map(str,input().split()))
+    a=l[0]
+    b=l[1]
+    print(a[0].lower(),end='')
+    for j in b:
+        print(j.lower(),end='')
+    print('@mapcom-group.com')
+Evaluating
+s = input()
+s = list(s)
+sum = 0
+cnt = 0
+l = []
+for i in s:
+    if i == 'O':
+        cnt += 1
+    else:
+        l.append(cnt)
+        cnt = 0
+l.append(cnt)
+for i in l:
+    sum += (i*(i + 1))//2
+print(sum)
+
+
+
